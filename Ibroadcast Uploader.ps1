@@ -160,7 +160,7 @@ function ExecuteOptions {
       foreach ($file in $mediaFilesQ) {
         Write-Host "Uploading $($file.Name)"
 
-        $cksum = (Get-FileHash $file.FullName -Algorithm MD5).Hash
+        $cksum = (Get-FileHash -LiteralPath $file.FullName -Algorithm MD5).Hash
         if ($md5s -contains $cksum) {
           Write-Host "skipping, already uploaded"
           continue
